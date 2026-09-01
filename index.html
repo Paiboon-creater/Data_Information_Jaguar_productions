@@ -111,6 +111,11 @@
             overflow: hidden;
         }
 
+        /* ปรับให้ปุ่มที่ 9 ขยายเต็ม 2 ช่อง เพื่อความสมดุล */
+        .menu-btn:nth-child(9) {
+            grid-column: span 2;
+        }
+
         .menu-btn i {
             font-size: 2rem;
             color: #b3ffcc;
@@ -218,6 +223,12 @@
             <a href="https://paiboon-creater.github.io/report_bord/" class="menu-btn">
                 <i class="fa-solid fa-table-columns"></i>
                 <span>กระดานรายงาน<br>(Report Board)</span>
+            </a>
+
+            <!-- 9. รายงานต้นทุนการผลิต (Cost Matrix) -->
+            <a href="https://paiboon-creater.github.io/cost_per_unit_report/" class="menu-btn">
+                <i class="fa-solid fa-coins"></i>
+                <span>รายงานต้นทุนการผลิต<br>(Cost Report)</span>
             </a>
         </div>
     </div>
