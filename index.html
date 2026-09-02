@@ -12,7 +12,7 @@
         :root {
             --neon-green: #00ff41;
             --neon-red: #ff3333;
-            --dark-bg: #030a05; /* เขียวทึมมืดๆ */
+            --dark-bg: #030a05;
             --panel-bg: rgba(3, 15, 8, 0.9);
         }
 
@@ -38,7 +38,7 @@
         }
 
         /* ------------------------------------------
-           แถบวิ่งตลาดหุ้น (Ticker ปรับให้วิ่งช้าลง + ฟอนต์บางเล็ก)
+           แถบวิ่งตลาดหุ้น (ปรับความเร็วให้ช้าลง อ่านทันแน่นอน)
         ------------------------------------------ */
         .ticker-wrap {
             position: fixed;
@@ -59,10 +59,10 @@
             white-space: nowrap;
             padding-right: 100%;
             box-sizing: content-box;
-            /* ปรับความเร็วจาก 30s เป็น 55s เพื่อให้วิ่งช้าลง อ่านทัน */
-            animation: ticker 55s linear infinite;
+            /* ปรับจาก 55s เป็น 110s ให้วิ่งช้าลงอีกเท่าตัว */
+            animation: ticker 110s linear infinite;
             font-family: 'Courier New', Courier, monospace;
-            font-weight: 300; /* ฟอนต์ตัวบางเล็ก */
+            font-weight: 300;
             font-size: 0.8rem;
             letter-spacing: 1px;
         }
@@ -81,7 +81,6 @@
             padding: 0 25px;
         }
         
-        /* สีเขียวและสีแดงสไตล์หุ้น */
         .t-green { color: #00ff41; text-shadow: 0 0 4px rgba(0,255,65,0.4); }
         .t-red { color: #ff4d4d; text-shadow: 0 0 4px rgba(255,77,77,0.4); }
         .t-white { color: #cccccc; }
@@ -152,7 +151,6 @@
            ปุ่มสแตนเลสขัดเงา สีน้ำเงิน (Blue Polished Stainless)
         ------------------------------------------ */
         .menu-btn {
-            /* ไล่สีสเตนเลสโทนฟ้า-น้ำเงินเงางาม */
             background: linear-gradient(135deg, 
                 #d0e1fd 0%, 
                 #ffffff 20%, 
@@ -180,7 +178,6 @@
             z-index: 1;
         }
 
-        /* แสงสะท้อนวิ่งผ่านปุ่ม */
         .menu-btn::before {
             content: '';
             position: absolute;
@@ -199,7 +196,7 @@
 
         .menu-btn i {
             font-size: 1.6rem;
-            color: #0b1d3a; /* สีน้ำเงินเข้มตัดกับเหล็ก */
+            color: #0b1d3a;
             margin-bottom: 8px;
             transition: all 0.3s ease;
             text-shadow: 1px 1px 0px rgba(255,255,255,0.7), -1px -1px 0px rgba(0,0,0,0.3);
@@ -214,7 +211,6 @@
             text-shadow: 1px 1px 0px rgba(255,255,255,0.7);
         }
 
-        /* เมื่อเอาเมาส์ชี้ เรืองแสงสีฟ้าสดใส */
         .menu-btn:hover {
             transform: translateY(-2px);
             box-shadow: 
@@ -245,7 +241,6 @@
 </head>
 <body>
 
-    <!-- แถบวิ่งตลาดหุ้น (วิ่งช้าลง + ฟอนต์ตัวบางเล็ก + สลับสีเขียวแดง) -->
     <div class="ticker-wrap">
         <div class="ticker-content" id="stockTicker">
             <span class="ticker-item t-green">LOADING MARKET FEED...</span>
@@ -306,9 +301,6 @@
     </div>
 
 <script>
-    // ----------------------------------------------------
-    // 1. ระบบเสียงคลิกสไตล์สวิตช์โลหะ
-    // ----------------------------------------------------
     let audioCtx = null;
 
     function initAudio() {
@@ -348,9 +340,6 @@
     document.body.addEventListener('click', initAudio, { once: true });
     document.body.addEventListener('mousemove', initAudio, { once: true });
 
-    // ----------------------------------------------------
-    // 2. ระบบดึงข้อมูลวิ่ง Ticker (สลับสีเขียว/แดงอัตโนมัติ)
-    // ----------------------------------------------------
     const SUPABASE_URL = "https://siiiifesdjuunwmwozfb.supabase.co/rest/v1";
     const SUPABASE_KEY = "sb_publishable_ohToE8Z_Fzo87uBtzdPDIg_cqHCi3HT";
     const headers = { 
@@ -389,8 +378,6 @@
                     }
 
                     let qty = Number(d.produced_amount).toLocaleString();
-                    
-                    // สลับสีเขียวและแดงตามลำดับข้อมูล ให้เหมือนกระดานหุ้น
                     let colorClass = (index % 2 === 0) ? "t-green" : "t-red";
                     let arrowSymbol = (index % 2 === 0) ? "▲" : "▼";
 
