@@ -10,9 +10,10 @@
     
     <style>
         :root {
-            --neon-green: #00ff41; /* สีเขียวแบบ Terminal/Stock */
-            --dark-bg: #050d08;
-            --panel-bg: rgba(5, 20, 10, 0.85);
+            --neon-green: #00ff41;
+            --neon-red: #ff3333;
+            --dark-bg: #030a05; /* เขียวทึมมืดๆ */
+            --panel-bg: rgba(3, 15, 8, 0.9);
         }
 
         * {
@@ -24,10 +25,9 @@
 
         body {
             background-color: var(--dark-bg);
-            /* พื้นหลังเป็นลายตารางจางๆ เหมือนหน้าจอเทอร์มินัล */
             background-image: 
-                linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(0, 255, 65, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.02) 1px, transparent 1px);
             background-size: 20px 20px;
             display: flex;
             justify-content: center;
@@ -38,19 +38,19 @@
         }
 
         /* ------------------------------------------
-           แถบวิ่งตลาดหุ้น (Stock Ticker)
+           แถบวิ่งตลาดหุ้น (Ticker ปรับให้วิ่งช้าลง + ฟอนต์บางเล็ก)
         ------------------------------------------ */
         .ticker-wrap {
             position: fixed;
             top: 0;
             width: 100%;
             background-color: #000;
-            border-bottom: 1px solid var(--neon-green);
+            border-bottom: 1px solid rgba(0, 255, 65, 0.3);
             overflow: hidden;
-            height: 35px;
+            height: 32px;
             display: flex;
             align-items: center;
-            box-shadow: 0 2px 15px rgba(0, 255, 65, 0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
             z-index: 1000;
         }
 
@@ -59,16 +59,16 @@
             white-space: nowrap;
             padding-right: 100%;
             box-sizing: content-box;
-            animation: ticker 30s linear infinite;
-            color: var(--neon-green);
+            /* ปรับความเร็วจาก 30s เป็น 55s เพื่อให้วิ่งช้าลง อ่านทัน */
+            animation: ticker 55s linear infinite;
             font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            font-size: 0.9rem;
-            text-shadow: 0 0 5px var(--neon-green);
+            font-weight: 300; /* ฟอนต์ตัวบางเล็ก */
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
 
         .ticker-content:hover {
-            animation-play-state: paused; /* หยุดวิ่งเมื่อเอาเมาส์ชี้ */
+            animation-play-state: paused;
         }
 
         @keyframes ticker {
@@ -78,37 +78,41 @@
 
         .ticker-item {
             display: inline-block;
-            padding: 0 30px;
+            padding: 0 25px;
         }
-        .ticker-up { color: #00ff41; }
         
+        /* สีเขียวและสีแดงสไตล์หุ้น */
+        .t-green { color: #00ff41; text-shadow: 0 0 4px rgba(0,255,65,0.4); }
+        .t-red { color: #ff4d4d; text-shadow: 0 0 4px rgba(255,77,77,0.4); }
+        .t-white { color: #cccccc; }
+
         /* ------------------------------------------
            ส่วนแอปหลัก
         ------------------------------------------ */
         .app-container {
             width: 100%;
             max-width: 440px;
-            margin-top: 50px; /* เว้นที่ให้แถบวิ่ง */
+            margin-top: 45px;
             background: var(--panel-bg);
-            border: 1px solid rgba(0, 255, 65, 0.2);
-            box-shadow: 0 0 30px rgba(0, 20, 0, 0.9);
-            padding: 30px 20px;
+            border: 1px solid rgba(0, 255, 65, 0.15);
+            box-shadow: 0 0 30px rgba(0, 10, 5, 0.95);
+            padding: 25px 20px;
             border-radius: 10px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .logo-container {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 15px;
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 12px;
             background: #000;
             border-radius: 50%;
             border: 2px solid var(--neon-green);
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.5), inset 0 0 10px rgba(0, 255, 65, 0.3);
+            box-shadow: 0 0 12px rgba(0, 255, 65, 0.4), inset 0 0 8px rgba(0, 255, 65, 0.2);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -119,47 +123,47 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(20%) sepia(100%) hue-rotate(70deg) saturate(300%) brightness(0.8); /* ย้อมสีโลโก้ให้เข้ากับธีมเขียว */
+            filter: grayscale(20%) sepia(100%) hue-rotate(70deg) saturate(300%) brightness(0.8);
         }
 
         h1 {
             color: var(--neon-green);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
         }
 
         .subtitle {
-            color: #88cc99;
-            font-size: 0.75rem;
-            margin-top: 5px;
+            color: #669977;
+            font-size: 0.7rem;
+            margin-top: 4px;
             letter-spacing: 3px;
         }
 
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 12px;
         }
 
         /* ------------------------------------------
-           ปุ่มสแตนเลสขัดเงา (Polished Stainless Steel)
+           ปุ่มสแตนเลสขัดเงา สีน้ำเงิน (Blue Polished Stainless)
         ------------------------------------------ */
         .menu-btn {
-            /* ไล่สีให้เหมือนพื้นผิวโลหะสะท้อนแสง */
+            /* ไล่สีสเตนเลสโทนฟ้า-น้ำเงินเงางาม */
             background: linear-gradient(135deg, 
-                #e6e9f0 0%, 
+                #d0e1fd 0%, 
                 #ffffff 20%, 
-                #aab0b9 45%, 
-                #d3d7df 60%, 
-                #858d99 80%, 
-                #ffffff 100%
+                #5b8cd6 45%, 
+                #93b7ef 60%, 
+                #2e5c9e 80%, 
+                #e1ecff 100%
             );
-            border: 1px solid #6b7280;
+            border: 1px solid #3b6fb6;
             border-radius: 12px;
-            padding: 15px 10px;
+            padding: 14px 8px;
             text-decoration: none;
             display: flex;
             flex-direction: column;
@@ -169,21 +173,20 @@
             transition: all 0.2s ease;
             position: relative;
             overflow: hidden;
-            /* สร้างมิติความนูนและเงาตกกระทบ */
             box-shadow: 
-                inset 0px 2px 2px rgba(255, 255, 255, 1),
-                inset 0px -2px 3px rgba(0, 0, 0, 0.3),
-                0 6px 10px rgba(0, 0, 0, 0.6);
+                inset 0px 2px 2px rgba(255, 255, 255, 0.9),
+                inset 0px -2px 3px rgba(0, 0, 0, 0.4),
+                0 5px 8px rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
 
-        /* เอฟเฟกต์แสงสะท้อนวิ่งผ่านปุ่ม */
+        /* แสงสะท้อนวิ่งผ่านปุ่ม */
         .menu-btn::before {
             content: '';
             position: absolute;
             top: 0; left: -100%;
             width: 50%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
             transform: skewX(-25deg);
             transition: all 0.5s;
             z-index: -1;
@@ -195,59 +198,57 @@
         }
 
         .menu-btn i {
-            font-size: 1.8rem;
-            color: #1a252f; /* สีเทาดำเข้มให้ตัดกับโลหะ */
-            margin-bottom: 10px;
+            font-size: 1.6rem;
+            color: #0b1d3a; /* สีน้ำเงินเข้มตัดกับเหล็ก */
+            margin-bottom: 8px;
             transition: all 0.3s ease;
-            /* รอยสลักลงไปในเหล็ก */
-            text-shadow: 1px 1px 0px rgba(255,255,255,0.8), -1px -1px 0px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.7), -1px -1px 0px rgba(0,0,0,0.3);
         }
 
         .menu-btn span {
-            color: #1a252f;
-            font-size: 0.8rem;
+            color: #0b1d3a;
+            font-size: 0.78rem;
             font-weight: 700;
             line-height: 1.2;
             transition: all 0.3s ease;
-            text-shadow: 1px 1px 0px rgba(255,255,255,0.8);
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.7);
         }
 
-        /* เมื่อเอาเมาส์ชี้ ให้เรืองแสงสีเขียวหุ้น */
+        /* เมื่อเอาเมาส์ชี้ เรืองแสงสีฟ้าสดใส */
         .menu-btn:hover {
             transform: translateY(-2px);
             box-shadow: 
                 inset 0px 2px 2px rgba(255, 255, 255, 1),
-                inset 0px -2px 3px rgba(0, 0, 0, 0.3),
-                0 8px 15px rgba(0, 255, 65, 0.3);
-            border-color: var(--neon-green);
+                inset 0px -2px 3px rgba(0, 0, 0, 0.4),
+                0 8px 15px rgba(0, 150, 255, 0.4);
+            border-color: #00aaff;
         }
 
         .menu-btn:hover i {
-            color: #00cc33;
-            text-shadow: 0 0 8px var(--neon-green), 1px 1px 0px #fff;
+            color: #0055ff;
+            text-shadow: 0 0 8px rgba(0, 136, 255, 0.8), 1px 1px 0px #fff;
             transform: scale(1.05);
         }
 
         .menu-btn:hover span {
-            color: #004d13;
+            color: #002b80;
         }
 
-        /* เมื่อกดปุ่ม ให้ยุบตัวลงไป */
         .menu-btn:active {
             transform: translateY(2px);
             box-shadow: 
-                inset 0px 4px 6px rgba(0,0,0,0.4),
-                0 2px 4px rgba(0,0,0,0.6);
+                inset 0px 4px 6px rgba(0,0,0,0.5),
+                0 2px 3px rgba(0,0,0,0.6);
         }
 
     </style>
 </head>
 <body>
 
-    <!-- แถบวิ่งตลาดหุ้น -->
+    <!-- แถบวิ่งตลาดหุ้น (วิ่งช้าลง + ฟอนต์ตัวบางเล็ก + สลับสีเขียวแดง) -->
     <div class="ticker-wrap">
         <div class="ticker-content" id="stockTicker">
-            <span class="ticker-item">กำลังโหลดข้อมูลตลาด (Loading Market Data...)</span>
+            <span class="ticker-item t-green">LOADING MARKET FEED...</span>
         </div>
     </div>
 
@@ -306,7 +307,7 @@
 
 <script>
     // ----------------------------------------------------
-    // 1. ระบบเสียงคลิกสไตล์สวิตช์โลหะ (Web Audio API)
+    // 1. ระบบเสียงคลิกสไตล์สวิตช์โลหะ
     // ----------------------------------------------------
     let audioCtx = null;
 
@@ -320,15 +321,14 @@
         if (!audioCtx) return;
         if (audioCtx.state === 'suspended') audioCtx.resume();
 
-        // สร้างเสียง "ติ๊ก" สั้นๆ ใสๆ
         const osc = audioCtx.createOscillator();
         const gainNode = audioCtx.createGain();
         
-        osc.type = 'triangle'; // เสียงที่ฟังดูคล้ายเคาะโลหะ
+        osc.type = 'triangle';
         osc.frequency.setValueAtTime(800, audioCtx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.03);
         
-        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime);
         gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
         
         osc.connect(gainNode);
@@ -338,21 +338,18 @@
         osc.stop(audioCtx.currentTime + 0.03);
     }
 
-    // ใส่ Event ให้ปุ่มทั้งหมด
     document.querySelectorAll('.hover-sound').forEach(btn => {
-        // ต้องให้ผู้ใช้ขยับเมาส์ในหน้าเว็บก่อนถึงจะอนุญาตให้สร้างเสียงได้
         btn.addEventListener('mouseenter', () => {
             initAudio();
             playMetallicClick();
         });
     });
 
-    // ปลดล็อกเสียงเมื่อผู้ใช้เริ่มแตะหน้าจอ
     document.body.addEventListener('click', initAudio, { once: true });
     document.body.addEventListener('mousemove', initAudio, { once: true });
 
     // ----------------------------------------------------
-    // 2. ระบบดึงข้อมูลวิ่ง Ticker จาก Supabase
+    // 2. ระบบดึงข้อมูลวิ่ง Ticker (สลับสีเขียว/แดงอัตโนมัติ)
     // ----------------------------------------------------
     const SUPABASE_URL = "https://siiiifesdjuunwmwozfb.supabase.co/rest/v1";
     const SUPABASE_KEY = "sb_publishable_ohToE8Z_Fzo87uBtzdPDIg_cqHCi3HT";
@@ -364,11 +361,9 @@
 
     async function fetchTickerData() {
         try {
-            // ดึงยอดผลิตล่าสุด 10 รายการ
-            const dailyRes = await fetch(`${SUPABASE_URL}/daily_production?select=id_order,id_target,produced_amount&order=id.desc&limit=10`, { headers });
+            const dailyRes = await fetch(`${SUPABASE_URL}/daily_production?select=id_order,id_target,produced_amount&order=id.desc&limit=12`, { headers });
             const dailyData = await dailyRes.json();
 
-            // ดึงอ้างอิง Order และ Step เพื่อเอาชื่อมาโชว์
             const [ordersRes, targetsRes, stepsRes] = await Promise.all([
                 fetch(`${SUPABASE_URL}/orders?select=id_order,order_no`, { headers }),
                 fetch(`${SUPABASE_URL}/targets?select=id_target,id_step`, { headers }),
@@ -379,41 +374,41 @@
             const targets = await targetsRes.json();
             const steps = await stepsRes.json();
 
-            // สร้างชุดข้อมูลสำหรับวิ่งบนแถบ
             let tickerString = "";
             
             if (dailyData.length > 0) {
-                dailyData.forEach(d => {
+                dailyData.forEach((d, index) => {
                     let orderInfo = orders.find(o => o.id_order === d.id_order);
-                    let orderNo = orderInfo ? orderInfo.order_no : "Unknown";
+                    let orderNo = orderInfo ? orderInfo.order_no : "UNKNOWN";
                     
                     let targetInfo = targets.find(t => t.id_target === d.id_target);
-                    let stepName = "Unknown";
+                    let stepName = "PROCESS";
                     if (targetInfo) {
                         let stepInfo = steps.find(s => s.id_step === targetInfo.id_step);
                         if (stepInfo) stepName = stepInfo.step_name;
                     }
 
-                    // ประกอบร่างข้อความ
                     let qty = Number(d.produced_amount).toLocaleString();
-                    tickerString += `<span class="ticker-item">JAG-PROD: [${orderNo}] ขั้นตอน <span style="color:#fff;">${stepName}</span> ยอดเข้า <span class="ticker-up">+${qty}</span> ชิ้น ▲</span>`;
+                    
+                    // สลับสีเขียวและแดงตามลำดับข้อมูล ให้เหมือนกระดานหุ้น
+                    let colorClass = (index % 2 === 0) ? "t-green" : "t-red";
+                    let arrowSymbol = (index % 2 === 0) ? "▲" : "▼";
+
+                    tickerString += `<span class="ticker-item t-white">ORD: <span style="color:#00ffff;">[${orderNo}]</span> | ${stepName} | VOL: <span class="${colorClass}">${qty} ${arrowSymbol}</span></span>`;
                 });
                 
-                // นำมาต่อกันให้ยาวขึ้นเพื่อให้วิ่งลื่นไหล
                 document.getElementById('stockTicker').innerHTML = tickerString + tickerString;
             } else {
-                document.getElementById('stockTicker').innerHTML = `<span class="ticker-item ticker-up">▲ ยังไม่มีรายการผลิตในระบบ ▲</span>`;
+                document.getElementById('stockTicker').innerHTML = `<span class="ticker-item t-green">▲ NO RECENT PRODUCTION DATA FOUND ▲</span>`;
             }
 
         } catch (error) {
             console.error("Ticker Error:", error);
-            document.getElementById('stockTicker').innerHTML = `<span class="ticker-item" style="color:red;">ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ตลาดได้</span>`;
+            document.getElementById('stockTicker').innerHTML = `<span class="ticker-item t-red">ERR: MARKET CONNECTION FAILED</span>`;
         }
     }
 
-    // เริ่มทำงานเมื่อโหลดเสร็จ
     document.addEventListener("DOMContentLoaded", fetchTickerData);
-
 </script>
 </body>
 </html>
