@@ -111,10 +111,7 @@
             overflow: hidden;
         }
 
-        /* ปรับให้ปุ่มที่ 9 ขยายเต็ม 2 ช่อง เพื่อความสมดุล */
-        .menu-btn:nth-child(9) {
-            grid-column: span 2;
-        }
+        /* เอา CSS ที่ขยายปุ่มที่ 9 ออก เพื่อให้ปุ่ม 9 และ 10 เรียงคู่กันได้สมดุล */
 
         .menu-btn i {
             font-size: 2rem;
@@ -229,6 +226,12 @@
             <a href="https://paiboon-creater.github.io/cost_per_unit_report/" class="menu-btn">
                 <i class="fa-solid fa-coins"></i>
                 <span>รายงานต้นทุนการผลิต<br>(Cost Report)</span>
+            </a>
+
+            <!-- 10. รายละเอียดการผลิตตามเลขที่ใบสั่ง -->
+            <a href="https://paiboon-creater.github.io/scandal_report/" class="menu-btn">
+                <i class="fa-solid fa-clipboard-list"></i>
+                <span>รายละเอียดการผลิต<br>ตามเลขที่ใบสั่ง</span>
             </a>
         </div>
     </div>
