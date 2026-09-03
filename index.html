@@ -237,6 +237,46 @@
                 0 2px 3px rgba(0,0,0,0.6);
         }
 
+        /* ------------------------------------------
+           ปุ่มสแตนเลสขัดเงา สีเขียว (Green Polished Stainless)
+        ------------------------------------------ */
+        .btn-green {
+            background: linear-gradient(135deg, 
+                #d0fdd7 0%, 
+                #ffffff 20%, 
+                #5bd669 45%, 
+                #93ef9d 60%, 
+                #2e9e3e 80%, 
+                #e1ffea 100%
+            );
+            border: 1px solid #3bb64c;
+        }
+
+        .btn-green i {
+            color: #0b3a14;
+        }
+
+        .btn-green span {
+            color: #0b3a14;
+        }
+
+        .btn-green:hover {
+            border-color: #00ff41;
+            box-shadow: 
+                inset 0px 2px 2px rgba(255, 255, 255, 1),
+                inset 0px -2px 3px rgba(0, 0, 0, 0.4),
+                0 8px 15px rgba(0, 255, 65, 0.4);
+        }
+
+        .btn-green:hover i {
+            color: #00b32d;
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.8), 1px 1px 0px #fff;
+        }
+
+        .btn-green:hover span {
+            color: #004d13;
+        }
+
     </style>
 </head>
 <body>
@@ -273,7 +313,8 @@
                 <i class="fa-solid fa-chart-column"></i>
                 <span>ตั้งยอดมาตรฐาน</span>
             </a>
-            <a href="https://paiboon-creater.github.io/daily-production/" class="menu-btn hover-sound">
+            <!-- เพิ่ม class btn-green เข้าไปที่ปุ่มนี้ -->
+            <a href="https://paiboon-creater.github.io/daily-production/" class="menu-btn btn-green hover-sound">
                 <i class="fa-solid fa-chart-line"></i>
                 <span>ป้อนข้อมูลผลิตรายวัน<br>(พิมพ์ใบมิเตอร์)</span>
             </a>
