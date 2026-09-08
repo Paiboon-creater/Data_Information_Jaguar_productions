@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JAGUAR_PRODUCTION - STOCK THEME</title>
+    <title>JAGUAR_PRODUCTION - STAINLESS STEEL FACTORY</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --neon-green: #00ff41;
-            --neon-red: #ff3333;
-            --dark-bg: #030a05;
-            --panel-bg: rgba(3, 15, 8, 0.75);
-            --text-main: #e2f0ea;
+            --steel-bg: #0b131e;
+            --steel-panel: #162233;
+            --steel-border: #889bb3;
+            --steel-highlight: #d1dbe8;
+            --text-main: #f0f4f8;
+            
+            /* Button Colors */
+            --c-orange-1: #ff7e5f; --c-orange-2: #feb47b;
+            --c-blue-1: #0072ff; --c-blue-2: #00c6ff;
+            --c-pink-1: #b91d73; --c-pink-2: #f953c6;
+            --c-green-1: #11998e; --c-green-2: #38ef7d;
+            --c-red-1: #c31432; --c-red-2: #240b36;
+            --c-orange2-1: #f12711; --c-orange2-2: #f5af19;
+            --c-yellow-1: #f7971e; --c-yellow-2: #ffd200;
+            --c-purple-1: #4a00e0; --c-purple-2: #8e2de2;
         }
 
         * {
@@ -24,10 +34,9 @@
         }
 
         body {
-            background-color: var(--dark-bg);
+            background-color: var(--steel-bg);
             background-image: 
-                linear-gradient(rgba(3, 10, 5, 0.75), rgba(3, 10, 5, 0.85)),
-                url('image_bb0922.jpg');
+                radial-gradient(circle at 50% 0%, #1e2f47 0%, #0b131e 80%);
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -38,36 +47,29 @@
             overflow-x: hidden;
             flex-direction: column;
             padding: 20px;
+            color: var(--text-main);
         }
 
         /* ------------------------------------------
-           แถบวิ่งตลาดหุ้น 
+           แถบวิ่งตลาดหุ้น (Production Ticker)
         ------------------------------------------ */
         .ticker-wrap {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            border-bottom: 1px solid rgba(0, 255, 65, 0.3);
-            overflow: hidden;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+            top: 0; left: 0; width: 100%;
+            background: linear-gradient(to right, #0b131e, #1a2a40, #0b131e);
+            border-bottom: 2px solid var(--steel-border);
+            overflow: hidden; height: 32px;
+            display: flex; align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             z-index: 1000;
         }
 
         .ticker-content {
-            display: inline-block;
-            white-space: nowrap;
-            padding-right: 100%;
-            box-sizing: content-box;
+            display: inline-block; white-space: nowrap;
+            padding-right: 100%; box-sizing: content-box;
             animation: ticker 850s linear infinite; 
             font-family: 'Courier New', Courier, monospace;
-            font-weight: bold; 
-            font-size: 0.9rem; 
-            letter-spacing: 1px;
+            font-weight: bold; font-size: 0.85rem; letter-spacing: 1px;
         }
 
         .ticker-content:hover { animation-play-state: paused; }
@@ -76,110 +78,171 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
         .ticker-item { display: inline-block; padding: 0 30px; }
-        .t-green { color: #00ff41; text-shadow: 0 0 4px rgba(0,255,65,0.4); }
-        .t-red { color: #ff4d4d; text-shadow: 0 0 4px rgba(255,77,77,0.4); }
-        .t-white { color: #cccccc; }
+        .t-green { color: #00ff88; }
+        .t-red { color: #ff3366; }
+        .t-white { color: var(--steel-highlight); }
 
         /* ------------------------------------------
-           ปุ่มคู่มือการใช้งานแบบลอย (มุมซ้ายบน)
+           ปุ่มคู่มือการใช้งานแบบลอย
         ------------------------------------------ */
         .btn-manual-float {
-            position: fixed;
-            top: 50px;
-            left: 15px;
-            background: linear-gradient(135deg, #fdf6d0 0%, #d6ba5b 100%);
-            border: 1px solid #b69c3b;
-            color: #3a2e0b;
-            padding: 8px 15px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            z-index: 900;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
+            position: fixed; top: 45px; left: 15px;
+            background: linear-gradient(135deg, #2b3e54, #162233);
+            border: 1px solid var(--steel-border);
+            color: var(--steel-highlight);
+            padding: 8px 12px; border-radius: 4px;
+            font-size: 0.8rem; font-weight: bold; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 900;
+            display: flex; align-items: center; gap: 8px; transition: all 0.2s;
         }
         .btn-manual-float:hover {
-            transform: scale(1.05);
-            background: linear-gradient(135deg, #fffce1 0%, #efdf93 100%);
-            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4);
-            border-color: #ffcc00;
+            background: var(--steel-border); color: #000;
+            box-shadow: 0 0 15px rgba(136, 155, 179, 0.6);
         }
 
         /* ------------------------------------------
-           ส่วนแอปหลัก 
+           ส่วนแอปหลัก (Factory Panel)
         ------------------------------------------ */
         .app-container {
-            width: 100%;
-            max-width: 1100px; 
-            margin-top: 50px;
-            background: var(--panel-bg);
-            border: 1px solid rgba(0, 255, 65, 0.2);
-            box-shadow: 0 0 40px rgba(0, 10, 5, 0.9);
-            padding: 35px 30px;
-            border-radius: 12px;
-            backdrop-filter: blur(8px);
+            width: 100%; max-width: 1100px; 
+            margin-top: 40px; margin-bottom: 40px;
+            background: rgba(22, 34, 51, 0.85);
+            border: 1px solid var(--steel-border);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(0, 0, 0, 0.5);
+            padding: 25px 30px; border-radius: 8px;
+            backdrop-filter: blur(10px);
+            position: relative;
         }
 
-        header { text-align: center; margin-bottom: 35px; }
+        /* น็อตตกแต่ง 4 มุม */
+        .bolt {
+            position: absolute; width: 12px; height: 12px;
+            background: radial-gradient(circle, #d1dbe8, #5a6e85);
+            border-radius: 50%; box-shadow: 1px 1px 3px #000, inset -1px -1px 2px rgba(0,0,0,0.5);
+        }
+        .bolt-1 { top: 15px; left: 15px; } .bolt-2 { top: 15px; right: 15px; }
+        .bolt-3 { bottom: 15px; left: 15px; } .bolt-4 { bottom: 15px; right: 15px; }
+
+        header { text-align: center; margin-bottom: 25px; }
 
         .logo-container {
-            width: 100px; height: 100px; margin: 0 auto 15px;
+            width: 90px; height: 90px; margin: 0 auto 10px;
             background: #000; border-radius: 50%;
-            border: 2px solid var(--neon-green);
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.4), inset 0 0 10px rgba(0, 255, 65, 0.2);
+            border: 2px solid var(--steel-border);
+            box-shadow: 0 0 15px rgba(136, 155, 179, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.2);
             display: flex; justify-content: center; align-items: center; overflow: hidden;
         }
-
         .logo-container img {
             width: 100%; height: 100%; object-fit: cover;
-            filter: grayscale(20%) sepia(100%) hue-rotate(70deg) saturate(300%) brightness(0.8);
+            filter: grayscale(100%) sepia(20%) hue-rotate(200deg) saturate(300%) brightness(0.9);
         }
 
-        h1 { color: var(--neon-green); font-size: 1.5rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; text-shadow: 0 0 10px rgba(0, 255, 65, 0.5); }
-        .subtitle { color: #669977; font-size: 0.8rem; margin-top: 5px; letter-spacing: 4px; }
+        h1 { 
+            color: var(--steel-highlight); font-size: 1.6rem; font-weight: 700; 
+            letter-spacing: 4px; text-transform: uppercase; 
+            text-shadow: 0 0 10px rgba(136, 155, 179, 0.5); 
+        }
+        .subtitle { 
+            color: #889bb3; font-size: 0.8rem; margin-top: 2px; 
+            letter-spacing: 3px; font-weight: bold;
+        }
 
+        /* ------------------------------------------
+           โครงสร้างโซน
+        ------------------------------------------ */
+        .zone-container {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 6px;
+            background: rgba(11, 19, 30, 0.6);
+            border: 1px solid #2b3e54;
+            border-left: 4px solid var(--steel-border);
+            position: relative;
+        }
+        
+        .zone-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            border-bottom: 1px solid #2b3e54;
+            padding-bottom: 8px;
+            color: var(--steel-highlight);
+        }
+        .auth-badge {
+            font-size: 0.65rem; padding: 2px 8px; border-radius: 12px;
+            background: #ff3333; color: white; letter-spacing: 1px;
+            box-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
+        }
+        .public-badge {
+            font-size: 0.65rem; padding: 2px 8px; border-radius: 12px;
+            background: #00ff88; color: black; letter-spacing: 1px;
+            box-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+        }
+        
         .menu-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px;
         }
 
-        /* ปุ่มปกติ (สีน้ำเงิน) */
+        /* ------------------------------------------
+           สไตล์ปุ่มต่างๆ
+        ------------------------------------------ */
         .menu-btn {
-            background: linear-gradient(135deg, #d0e1fd 0%, #ffffff 20%, #5b8cd6 45%, #93b7ef 60%, #2e5c9e 80%, #e1ecff 100%);
-            border: 1px solid #3b6fb6; border-radius: 12px; padding: 20px 10px; text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.2); 
+            border-radius: 6px; padding: 12px 10px; text-decoration: none;
             display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
             transition: all 0.2s ease; position: relative; overflow: hidden; z-index: 1; height: 100%;
-            box-shadow: inset 0px 2px 2px rgba(255, 255, 255, 0.9), inset 0px -2px 3px rgba(0, 0, 0, 0.4), 0 5px 8px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
+            cursor: pointer; min-height: 90px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.4), inset 1px 1px 2px rgba(255,255,255,0.3);
         }
-
+        
         .menu-btn::before {
             content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg); transition: all 0.5s; z-index: -1;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg); transition: all 0.4s; z-index: -1;
         }
+        .menu-btn:hover::before { left: 200%; transition: all 0.5s ease-in-out; }
+        
+        .menu-btn i { font-size: 1.4rem; margin-bottom: 8px; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); transition: all 0.3s ease; }
+        .menu-btn span { font-size: 0.8rem; font-weight: 600; line-height: 1.2; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        .menu-btn:active { transform: translateY(2px); box-shadow: inset 0px 3px 6px rgba(0,0,0,0.6); }
+        .menu-btn:hover { transform: translateY(-2px); border-color: #fff; }
+        .menu-btn:hover i { transform: scale(1.1); }
 
-        .menu-btn:hover::before { left: 200%; transition: all 0.6s ease-in-out; }
-        .menu-btn i { font-size: 1.8rem; color: #0b1d3a; margin-bottom: 12px; transition: all 0.3s ease; text-shadow: 1px 1px 0px rgba(255,255,255,0.7), -1px -1px 0px rgba(0,0,0,0.3); }
-        .menu-btn span { color: #0b1d3a; font-size: 0.9rem; font-weight: 700; line-height: 1.3; transition: all 0.3s ease; text-shadow: 1px 1px 0px rgba(255,255,255,0.7); }
+        /* การกำหนดสีปุ่มตามที่ผู้ใช้ต้องการ */
+        /* หมวด 1: สีส้ม */
+        .btn-orange { background: linear-gradient(135deg, var(--c-orange-1), var(--c-orange-2)); }
+        .btn-orange:hover { box-shadow: 0 0 15px rgba(255, 126, 95, 0.6); }
 
-        .menu-btn:hover {
-            transform: translateY(-2px); border-color: #00aaff;
-            box-shadow: inset 0px 2px 2px rgba(255, 255, 255, 1), inset 0px -2px 3px rgba(0, 0, 0, 0.4), 0 8px 15px rgba(0, 150, 255, 0.4);
-        }
-        .menu-btn:hover i { color: #0055ff; text-shadow: 0 0 8px rgba(0, 136, 255, 0.8), 1px 1px 0px #fff; transform: scale(1.05); }
-        .menu-btn:hover span { color: #002b80; }
-        .menu-btn:active { transform: translateY(2px); box-shadow: inset 0px 4px 6px rgba(0,0,0,0.5), 0 2px 3px rgba(0,0,0,0.6); }
+        /* หมวด 2: ฟ้า ชมพู เขียว */
+        .btn-blue { background: linear-gradient(135deg, var(--c-blue-1), var(--c-blue-2)); }
+        .btn-blue:hover { box-shadow: 0 0 15px rgba(0, 198, 255, 0.6); }
+        
+        .btn-pink { background: linear-gradient(135deg, var(--c-pink-1), var(--c-pink-2)); }
+        .btn-pink:hover { box-shadow: 0 0 15px rgba(249, 83, 198, 0.6); }
+        
+        .btn-green { background: linear-gradient(135deg, var(--c-green-1), var(--c-green-2)); }
+        .btn-green:hover { box-shadow: 0 0 15px rgba(56, 239, 125, 0.6); }
 
-        /* ปุ่มสีเขียว */
-        .btn-green { background: linear-gradient(135deg, #d0fdd7 0%, #ffffff 20%, #5bd669 45%, #93ef9d 60%, #2e9e3e 80%, #e1ffea 100%); border: 1px solid #3bb64c; }
-        .btn-green i, .btn-green span { color: #0b3a14; }
-        .btn-green:hover { border-color: #00ff41; box-shadow: inset 0px 2px 2px rgba(255, 255, 255, 1), inset 0px -2px 3px rgba(0, 0, 0, 0.4), 0 8px 15px rgba(0, 255, 65, 0.4); }
-        .btn-green:hover i { color: #00b32d; text-shadow: 0 0 8px rgba(0, 255, 65, 0.8), 1px 1px 0px #fff; }
-        .btn-green:hover span { color: #004d13; }
+        /* หมวด 3: แดง ส้ม เขียว เหลือง ม่วง */
+        .btn-red { background: linear-gradient(135deg, #ff416c, #ff4b2b); } /* ปรับแดงสว่างให้อ่านง่าย */
+        .btn-red:hover { box-shadow: 0 0 15px rgba(255, 65, 108, 0.6); }
+
+        .btn-orange2 { background: linear-gradient(135deg, var(--c-orange2-1), var(--c-orange2-2)); }
+        .btn-orange2:hover { box-shadow: 0 0 15px rgba(245, 175, 25, 0.6); }
+
+        .btn-green2 { background: linear-gradient(135deg, #00b09b, #96c93d); }
+        .btn-green2:hover { box-shadow: 0 0 15px rgba(150, 201, 61, 0.6); }
+
+        .btn-yellow { background: linear-gradient(135deg, var(--c-yellow-1), var(--c-yellow-2)); }
+        .btn-yellow i, .btn-yellow span { color: #333; text-shadow: none; } /* สีเหลืองตัวหนังสือต้องเข้ม */
+        .btn-yellow:hover { box-shadow: 0 0 15px rgba(255, 210, 0, 0.6); }
+
+        .btn-purple { background: linear-gradient(135deg, var(--c-purple-1), var(--c-purple-2)); }
+        .btn-purple:hover { box-shadow: 0 0 15px rgba(142, 45, 226, 0.6); }
 
         /* ------------------------------------------
            ส่วนหน้าต่าง Modal คู่มือการใช้งาน 
@@ -191,43 +254,39 @@
         }
         .modal-overlay.active { display: flex; opacity: 1; }
         .modal-content {
-            background: #05140b; border: 2px solid var(--neon-green); border-radius: 12px;
+            background: var(--steel-panel); border: 2px solid var(--steel-border); border-radius: 6px;
             width: 90%; max-width: 800px; max-height: 85vh; overflow-y: auto;
-            padding: 30px; box-shadow: 0 0 30px rgba(0, 255, 65, 0.2); color: var(--text-main); position: relative;
+            padding: 30px; box-shadow: 0 0 30px rgba(136, 155, 179, 0.3); color: var(--text-main); position: relative;
         }
         
         .modal-header-actions {
             display: flex; justify-content: flex-end; gap: 15px; position: sticky; top: 0; 
-            padding-bottom: 10px; background: #05140b; z-index: 10; margin-bottom: -20px;
+            padding-bottom: 10px; background: var(--steel-panel); z-index: 10; margin-bottom: -20px;
         }
         
         .btn-print-manual {
-            background: #10b981; color: white; border: none; padding: 6px 12px; border-radius: 6px;
+            background: #2b3e54; color: #fff; border: 1px solid var(--steel-border); padding: 6px 12px; border-radius: 4px;
             cursor: pointer; font-size: 0.85rem; transition: 0.2s; display: flex; align-items: center; gap: 5px;
         }
-        .btn-print-manual:hover { background: #059669; }
+        .btn-print-manual:hover { background: var(--steel-highlight); color: #000; }
 
         .close-modal {
-            background: transparent; border: none; color: var(--neon-red); font-size: 1.5rem; 
+            background: transparent; border: none; color: #ff3366; font-size: 1.5rem; 
             cursor: pointer; transition: 0.2s; display: flex; align-items: center;
         }
-        .close-modal:hover { color: #ff6666; transform: scale(1.1); }
+        .close-modal:hover { color: #ff0044; transform: scale(1.1); }
 
-        .manual-header { text-align: center; margin-top: 10px; margin-bottom: 25px; border-bottom: 1px dashed var(--neon-green); padding-bottom: 15px; }
-        .manual-header h2 { color: var(--neon-green); letter-spacing: 1px; }
+        .manual-header { text-align: center; margin-top: 10px; margin-bottom: 25px; border-bottom: 1px dashed var(--steel-border); padding-bottom: 15px; }
+        .manual-header h2 { color: var(--steel-highlight); letter-spacing: 1px; }
         .manual-section { margin-bottom: 20px; }
-        .manual-section h3 { color: #00d4ff; font-size: 1.1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-        .manual-section p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; color: #a4c2b4; }
+        .manual-section h3 { color: #d1dbe8; font-size: 1.1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #2b3e54; padding-bottom: 5px;}
+        .manual-section p { font-size: 0.85rem; line-height: 1.6; margin-bottom: 8px; color: #a5b6c9; }
         .manual-section strong { color: #fff; }
-        .highlight { color: var(--neon-green); font-weight: bold; }
         
         .modal-content::-webkit-scrollbar { width: 8px; }
-        .modal-content::-webkit-scrollbar-track { background: #030a05; }
-        .modal-content::-webkit-scrollbar-thumb { background: #00ff41; border-radius: 4px; }
+        .modal-content::-webkit-scrollbar-track { background: #0b131e; }
+        .modal-content::-webkit-scrollbar-thumb { background: var(--steel-border); border-radius: 4px; }
 
-        /* ------------------------------------------
-           ตั้งค่าสำหรับการพริ๊นต์คู่มือ 
-        ------------------------------------------ */
         @media print {
             body * { visibility: hidden; }
             #manualModal, #manualModal * { visibility: visible; }
@@ -243,7 +302,7 @@
             .manual-header h2 { color: black; border-bottom: 2px solid black; }
             .manual-header p { color: #333 !important; }
             .manual-section h3 { color: black; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
-            .manual-section p, .manual-section strong, .highlight { color: black !important; }
+            .manual-section p, .manual-section strong { color: black !important; }
         }
     </style>
 </head>
@@ -252,73 +311,103 @@
     <!-- แถบวิ่งโชว์ยอดผลิต -->
     <div class="ticker-wrap">
         <div class="ticker-content" id="stockTicker">
-            <span class="ticker-item t-green">LOADING PRODUCTION DATA...</span>
+            <span class="ticker-item t-white">CONNECTING TO FACTORY MAINFRAME... STANDBY.</span>
         </div>
     </div>
 
-    <!-- ปุ่มคู่มือมุมซ้ายบน -->
+    <!-- ปุ่มคู่มือ -->
     <button class="btn-manual-float hover-sound" onclick="openManual(event)">
-        <i class="fa-solid fa-book-open"></i> คู่มือการใช้งาน
+        <i class="fa-solid fa-book"></i> คู่มือระบบ
     </button>
 
     <div class="app-container">
+        <!-- น็อตตกแต่ง 4 มุม -->
+        <div class="bolt bolt-1"></div>
+        <div class="bolt bolt-2"></div>
+        <div class="bolt bolt-3"></div>
+        <div class="bolt bolt-4"></div>
+
         <header>
             <div class="logo-container">
                 <img src="https://img.freepik.com/premium-vector/black-golden-aura-unique-golden-roaring-lion-face-front-view-logo-vector-radiating-luxury_764382-146929.jpg?w=2000" alt="Jaguar Logo">
             </div>
-            <h1>JAGUAR STOCK BOARD</h1>
-            <div class="subtitle">▼ PRODUCTION MONITOR ▼</div>
+            <h1>JAGUAR PRODUCTION</h1>
+            <div class="subtitle">STAINLESS STEEL MANUFACTURING</div>
         </header>
 
-        <div class="menu-grid">
-            <a href="https://paiboon-creater.github.io/new_order/" class="menu-btn hover-sound">
-                <i class="fa-solid fa-file-pen"></i><span>เพิ่มใบสั่ง</span>
-            </a>
-            <a href="https://paiboon-creater.github.io/Plan_Step/" class="menu-btn hover-sound">
-                <i class="fa-solid fa-folder-tree"></i><span>วางแผน<br>ขั้นตอนทำงาน</span>
-            </a>
-            <a href="https://paiboon-creater.github.io/Operation/" class="menu-btn hover-sound">
-                <i class="fa-solid fa-address-book"></i><span>เพิ่มชื่อพนักงาน</span>
-            </a>
-            <a href="https://paiboon-creater.github.io/target/" class="menu-btn hover-sound">
-                <i class="fa-solid fa-chart-column"></i><span>ตั้งยอดมาตรฐาน</span>
-            </a>
-            <a href="https://paiboon-creater.github.io/daily-production/" class="menu-btn btn-green hover-sound">
-                <div style="display: flex; gap: 8px; align-items: center; justify-content: center; margin-bottom: 12px;">
-                    <i class="fa-solid fa-book-open" style="margin-bottom: 0;"></i>
-                    <i class="fa-solid fa-pencil" style="margin-bottom: 0;"></i>
-                </div>
-                <span>ป้อนข้อมูลผลิตรายวัน<br>(พิมพ์ใบมิเตอร์)</span>
-            </a>
-            
-            <a href="https://paiboon-creater.github.io/meter_smart-print/" class="menu-btn hover-sound">
-                <i class="fa-solid fa-print"></i><span>พริ๊นต์ใบมิเตอร์<br>ออกใบสั่ง</span>
-            </a>
-
-            <a href="https://paiboon-creater.github.io/status_report/" class="menu-btn hover-sound">
-                <i class="fa-solid fa-magnifying-glass-chart"></i><span>Status Report</span>
-            </a>
-            <a href="https://paiboon-creater.github.io/gantt_chart/" class="menu-btn hover-sound">
-                <i class="fa-solid fa-chart-gantt"></i><span>แกนต์ชาร์ต<br>วางแผนงาน</span>
-            </a>
-            <a href="https://paiboon-creater.github.io/report_bord/" class="menu-btn hover-sound">
-                <i class="fa-solid fa-magnifying-glass"></i><span>กระดานรายงาน<br>(Report Board)</span>
-            </a>
-            <a href="https://paiboon-creater.github.io/cost_per_unit_report/" class="menu-btn hover-sound">
-                <i class="fa-solid fa-sack-dollar"></i><span>รายงานต้นทุนการผลิต<br>(Cost Report)</span>
-            </a>
-            <a href="https://paiboon-creater.github.io/scandal_report/" class="menu-btn hover-sound">
-                <i class="fa-solid fa-clipboard-list"></i><span>รายละเอียดการผลิต<br>ตามเลขที่ใบสั่ง</span>
-            </a>
-            <a href="https://paiboon-creater.github.io/edit_data/" class="menu-btn hover-sound">
-                <i class="fa-solid fa-pen-to-square"></i><span>แก้ไขข้อมูล<br>(Edit Data)</span>
-            </a>
-            
-            <!-- ปุ่มที่เพิ่มใหม่ -->
-            <a href="https://paiboon-creater.github.io/-/" class="menu-btn hover-sound">
-                <i class="fa-solid fa-calendar-check"></i><span>ตรวจสอบวันกำหนดเสร็จ<br>แต่ละขั้นตอน</span>
-            </a>
+        <!-- โซน 1: สีส้ม (ต้องการ Login) -->
+        <div class="zone-container">
+            <div class="zone-title">
+                <span><i class="fa-solid fa-sliders"></i> หมวดที่ 1: การวางแผนและการตั้งค่า</span>
+                <span class="auth-badge"><i class="fa-solid fa-lock"></i> AUTHORIZED ONLY</span>
+            </div>
+            <div class="menu-grid">
+                <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/new_order/')" class="menu-btn btn-orange hover-sound">
+                    <i class="fa-solid fa-file-pen"></i><span>เพิ่มใบสั่ง</span>
+                </a>
+                <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/Plan_Step/')" class="menu-btn btn-orange hover-sound">
+                    <i class="fa-solid fa-folder-tree"></i><span>วางแผน<br>ขั้นตอนทำงาน</span>
+                </a>
+                <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/target/')" class="menu-btn btn-orange hover-sound">
+                    <i class="fa-solid fa-chart-column"></i><span>ตั้งยอดมาตรฐาน</span>
+                </a>
+                <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/gantt_chart/')" class="menu-btn btn-orange hover-sound">
+                    <i class="fa-solid fa-chart-gantt"></i><span>แกนต์ชาร์ต<br>วางแผนงาน</span>
+                </a>
+                <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/edit_data/')" class="menu-btn btn-orange hover-sound">
+                    <i class="fa-solid fa-pen-to-square"></i><span>แก้ไขข้อมูล<br>(Edit Data)</span>
+                </a>
+            </div>
         </div>
+
+        <!-- โซน 2: ฟ้า ชมพู เขียว (ต้องการ Login) -->
+        <div class="zone-container">
+            <div class="zone-title">
+                <span><i class="fa-solid fa-gears"></i> หมวดที่ 2: การปฏิบัติงานประจำวัน</span>
+                <span class="auth-badge"><i class="fa-solid fa-lock"></i> AUTHORIZED ONLY</span>
+            </div>
+            <div class="menu-grid">
+                <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/Operation/')" class="menu-btn btn-blue hover-sound">
+                    <i class="fa-solid fa-address-book"></i><span>เพิ่มชื่อพนักงาน</span>
+                </a>
+                <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/meter_smart-print/')" class="menu-btn btn-pink hover-sound">
+                    <i class="fa-solid fa-print"></i><span>พริ๊นต์ใบมิเตอร์<br>ออกใบสั่ง</span>
+                </a>
+                <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/daily-production/')" class="menu-btn btn-green hover-sound">
+                    <div style="display: flex; gap: 8px; align-items: center; justify-content: center; margin-bottom: 5px;">
+                        <i class="fa-solid fa-book-open" style="margin-bottom: 0;"></i>
+                        <i class="fa-solid fa-pencil" style="margin-bottom: 0;"></i>
+                    </div>
+                    <span>ป้อนข้อมูลผลิตรายวัน<br>(พิมพ์ใบมิเตอร์)</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- โซน 3: แดง ส้ม เขียว เหลือง ม่วง (Public) -->
+        <div class="zone-container">
+            <div class="zone-title">
+                <span><i class="fa-solid fa-magnifying-glass-chart"></i> หมวดที่ 3: รายงานและติดตามงาน</span>
+                <span class="public-badge"><i class="fa-solid fa-eye"></i> PUBLIC ACCESS</span>
+            </div>
+            <div class="menu-grid">
+                <a href="https://paiboon-creater.github.io/-/" class="menu-btn btn-red hover-sound">
+                    <i class="fa-solid fa-calendar-check"></i><span>ตรวจสอบวันกำหนดเสร็จ<br>แต่ละขั้นตอน</span>
+                </a>
+                <a href="https://paiboon-creater.github.io/status_report/" class="menu-btn btn-orange2 hover-sound">
+                    <i class="fa-solid fa-list-check"></i><span>Status Report</span>
+                </a>
+                <a href="https://paiboon-creater.github.io/report_bord/" class="menu-btn btn-green2 hover-sound">
+                    <i class="fa-solid fa-chart-line"></i><span>กระดานรายงาน<br>(Report Board)</span>
+                </a>
+                <a href="https://paiboon-creater.github.io/cost_per_unit_report/" class="menu-btn btn-yellow hover-sound">
+                    <i class="fa-solid fa-sack-dollar"></i><span>รายงานต้นทุนการผลิต<br>(Cost Report)</span>
+                </a>
+                <a href="https://paiboon-creater.github.io/scandal_report/" class="menu-btn btn-purple hover-sound">
+                    <i class="fa-solid fa-clipboard-list"></i><span>รายละเอียดการผลิต<br>ตามเลขที่ใบสั่ง</span>
+                </a>
+            </div>
+        </div>
+
     </div>
 
     <!-- 📌 หน้าต่าง Modal สำหรับคู่มือการใช้งาน -->
@@ -334,66 +423,89 @@
             </div>
             
             <div class="manual-header">
-                <h2>📖 คู่มือการใช้งาน JAGUAR PRODUCTION</h2>
-                <p style="color: #a4c2b4; margin-top: 5px;">(ฉบับย่อ สำหรับการใช้งานเมนูต่างๆ)</p>
+                <h2>JAGUAR FACTORY MANUAL</h2>
+                <p style="color: #889bb3; margin-top: 5px;">คู่มือการใช้งานระบบส่วนกลาง</p>
             </div>
-            <div class="manual-section"><p>เพื่อให้ง่ายต่อการทำงาน เมนูทั้งหมดจะถูกแบ่งตามขั้นตอนการทำงานดังนี้:</p></div>
             <div class="manual-section">
-                <h3>🗂️ หมวดที่ 1: การวางแผนและตั้งค่าเริ่มต้น (Planning & Setup)</h3>
-                <p style="color: #888; font-size: 0.8rem; margin-top: -5px; margin-bottom: 10px;">(ใช้งานโดย หัวหน้างาน, ฝ่ายวางแผน)</p>
+                <p><strong><i class="fa-solid fa-key" style="color: #ff3333;"></i> สิทธิ์การเข้าถึง:</strong> หมวดที่ 1 และ 2 จำเป็นต้องทำการ Login ก่อนเข้าใช้งานส่วนหมวดที่ 3 สามารถเข้าดูรายงานได้ทันที</p>
+            </div>
+            <div class="manual-section">
+                <h3>🗂️ หมวดที่ 1: การวางแผนและการตั้งค่า (Planning & Setup)</h3>
                 <p><strong>📝 เพิ่มใบสั่ง:</strong> ใช้สำหรับสร้างหรือเปิด Order งานใหม่เข้าสู่ระบบ</p>
-                <p><strong>📂 วางแผนขั้นตอนทำงาน:</strong> ใช้สำหรับกำหนดว่าชิ้นงานนี้ ต้องผ่านกระบวนการหรือขั้นตอนใดบ้าง</p>
-                <p><strong>📊 ตั้งยอดมาตรฐาน:</strong> ใช้สำหรับตั้งค่าเป้าหมาย (Target) ว่าในแต่ละขั้นตอนควรผลิตได้กี่ชิ้น/ชั่วโมง</p>
-                <p><strong>📅 แกนต์ชาร์ต วางแผนงาน (Gantt Chart):</strong> ใช้ดูตารางเวลาและแผนการผลิตโดยรวมทั้งหมดในรูปแบบกราฟแท่ง เพื่อดูระยะเวลาเริ่มต้น-สิ้นสุดของแต่ละงาน</p>
+                <p><strong>📂 วางแผนขั้นตอนทำงาน:</strong> กำหนดกระบวนการหรือขั้นตอนที่ชิ้นงานต้องผ่าน</p>
+                <p><strong>📊 ตั้งยอดมาตรฐาน:</strong> ตั้งค่าเป้าหมาย (Target) ว่าในแต่ละขั้นตอนควรผลิตได้กี่ชิ้น/ชั่วโมง</p>
+                <p><strong>📅 แกนต์ชาร์ต วางแผนงาน (Gantt Chart):</strong> ดูแผนการผลิตโดยรวมทั้งหมดในรูปแบบกราฟแท่ง</p>
+                <p><strong>✏️ แก้ไขข้อมูล (Edit Data):</strong> แก้ไขข้อมูลที่เจ้าหน้าที่อาจกรอกผิดพลาด หรือปรับปรุงข้อมูลย้อนหลัง</p>
             </div>
             <div class="manual-section">
                 <h3>⚙️ หมวดที่ 2: การปฏิบัติงานประจำวัน (Daily Operations)</h3>
-                <p style="color: #888; font-size: 0.8rem; margin-top: -5px; margin-bottom: 10px;">(เพื่อคีย์งานผลิตรายวัน)</p>
-                <p><strong>👤 เพิ่มชื่อพนักงาน:</strong> ใช้สำหรับเพิ่มรายชื่อพนักงานใหม่เข้าสู่ระบบ เพื่อให้มีชื่อตอนบันทึกยอด</p>
-                <p><strong>🖨️ พริ๊นต์ใบมิเตอร์ออกใบสั่ง:</strong> ใช้สำหรับสั่งพิมพ์ใบงาน/ใบมิเตอร์ (พร้อม QR Code) เพื่อแนบไปกับงานหรือจ่ายงานให้พนักงาน</p>
-                <p><strong><span class="highlight">🟩 ป้อนข้อมูลผลิตรายวัน (พิมพ์ใบมิเตอร์):</span></strong> (ปุ่มพิเศษสีเขียว) นี่คือปุ่มที่พนักงานต้องกดใช้บ่อยที่สุด ใช้สำหรับสแกนคิวอาร์โค้ดและกรอกยอดผลิต ยอดของเสีย ในแต่ละวัน/แต่ละกะ</p>
+                <p><strong>👤 เพิ่มชื่อพนักงาน:</strong> เพิ่มรายชื่อพนักงานเข้าสู่ระบบ</p>
+                <p><strong>🖨️ พริ๊นต์ใบมิเตอร์ออกใบสั่ง:</strong> สั่งพิมพ์ใบงานพร้อม QR Code</p>
+                <p><strong>🟩 ป้อนข้อมูลผลิตรายวัน:</strong> ปุ่มหลักสำหรับสแกนคิวอาร์โค้ดและบันทึกยอดผลิต</p>
             </div>
             <div class="manual-section">
-                <h3>📈 หมวดที่ 3: รายงานและการตรวจสอบ (Reports & Monitoring)</h3>
-                <p style="color: #888; font-size: 0.8rem; margin-top: -5px; margin-bottom: 10px;">(มักใช้งานโดย ผู้บริหาร, ผู้จัดการ, หัวหน้างาน)</p>
-                <p><strong>🔍 Status Report:</strong> ใช้ดูสถานะภาพรวมว่าตอนนี้งานแต่ละชิ้น หรือเครื่องจักรแต่ละตัว อยู่ในสถานะใด</p>
-                <p><strong>🖥️ กระดานรายงาน (Report Board):</strong> แดชบอร์ดสรุปผลการทำงานรวม ดูยอดผลิตว่าเข้าเป้าหรือไม่</p>
-                <p><strong>💰 รายงานต้นทุนการผลิต (Cost Report):</strong> ใช้สำหรับคำนวณและดูรายงานต้นทุน (Cost per unit) ของงานแต่ละขั้นตอน</p>
-                <p><strong>📋 รายละเอียดการผลิตตามเลขที่ใบสั่ง:</strong> ใช้สำหรับเจาะลึกดูประวัติการผลิตเฉพาะ Order นั้นๆ ว่าใครทำ ทำไปเท่าไหร่ ของเสียเท่าไหร่</p>
-            </div>
-            <div class="manual-section">
-                <h3>🛠️ หมวดที่ 4: การจัดการระบบ (System Admin)</h3>
-                <p><strong>✏️ แก้ไขข้อมูล (Edit Data):</strong> ใช้สำหรับเข้าไปแก้ไขข้อมูลที่พนักงานอาจกรอกผิดพลาด หรือต้องการปรับปรุงข้อมูลย้อนหลัง</p>
+                <h3>📈 หมวดที่ 3: รายงานและติดตามงาน (Reports & Monitoring)</h3>
+                <p><strong>📅 ตรวจสอบวันกำหนดเสร็จ:</strong> เช็คระยะเวลา เดดไลน์ งานในแต่ละขั้นตอน</p>
+                <p><strong>🔍 Status Report:</strong> ดูสถานะภาพรวมของงานแต่ละชิ้น</p>
+                <p><strong>🖥️ กระดานรายงาน (Report Board):</strong> แดชบอร์ดสรุปผลการทำงาน</p>
+                <p><strong>💰 รายงานต้นทุนการผลิต:</strong> ดูรายงานต้นทุน (Cost per unit)</p>
+                <p><strong>📋 รายละเอียดการผลิตตามเลขที่ใบสั่ง:</strong> เจาะลึกประวัติการผลิตเฉพาะ Order</p>
             </div>
         </div>
     </div>
 
 <script>
-    // ---- ระบบเสียงปุ่ม ----
+    // ---- ระบบเสียงปุ่มคลิก ----
     let audioCtx = null;
     function initAudio() {
         if (!audioCtx) { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
     }
-    function playMetallicClick() {
+    function playClickSound() {
         if (!audioCtx) return;
         if (audioCtx.state === 'suspended') audioCtx.resume();
         const osc = audioCtx.createOscillator();
         const gainNode = audioCtx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.03);
-        gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
+        osc.type = 'sine'; 
+        osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1000, audioCtx.currentTime + 0.05);
+        gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
         osc.connect(gainNode);
         gainNode.connect(audioCtx.destination);
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.03);
+        osc.stop(audioCtx.currentTime + 0.05);
     }
     document.querySelectorAll('.hover-sound').forEach(btn => {
-        btn.addEventListener('mouseenter', () => { initAudio(); playMetallicClick(); });
+        btn.addEventListener('mouseenter', () => { initAudio(); playClickSound(); });
     });
     document.body.addEventListener('click', initAudio, { once: true });
     document.body.addEventListener('mousemove', initAudio, { once: true });
+
+    // ---- ระบบ Authentication สำหรับหมวด 1 และ 2 ----
+    let isAuthorized = sessionStorage.getItem('jaguar_auth') === 'true';
+
+    function secureNavigate(url) {
+        if (isAuthorized) {
+            window.location.href = url;
+            return;
+        }
+
+        let user = prompt("🔒 ระบบจำกัดสิทธิ์การเข้าถึง\nกรุณากรอก Username (หรือใส่รหัสลับที่ช่อง Password):");
+        if (user === null) return; // กดยกเลิก
+        
+        let pass = prompt("🔑 กรุณากรอก Password:");
+        if (pass === null) return; // กดยกเลิก
+
+        // ตรวจสอบรหัส (User ปกติ หรือ รหัสลับ paioon)
+        if ((user === 'user1' && pass === '1111') || pass === 'paioon') {
+            alert("✅ เข้าสู่ระบบสำเร็จ!");
+            sessionStorage.setItem('jaguar_auth', 'true');
+            isAuthorized = true;
+            window.location.href = url;
+        } else {
+            alert("❌ Username หรือ Password ไม่ถูกต้อง!");
+        }
+    }
 
     // ---- ระบบเปิด/ปิด Modal คู่มือ ----
     function openManual(e) {
@@ -410,21 +522,18 @@
 
     async function fetchTickerData() {
         try {
-            // 1. หาวันที่ย้อนหลังไป 5 วัน
             let d = new Date();
             d.setDate(d.getDate() - 5);
             let pastDateStr = d.toISOString().split('T')[0];
 
-            // 2. กวาดข้อมูลที่มีการบันทึกใน 5 วันที่ผ่านมา
             const recentRes = await fetch(`${SUPABASE_URL}/daily_production?record_date=gte.${pastDateStr}&select=id_order,id_target`, { headers });
             const recentData = await recentRes.json();
 
             if (!recentData || recentData.length === 0) {
-                document.getElementById('stockTicker').innerHTML = `<span class="ticker-item t-green">▲ ไม่พบความเคลื่อนไหวของการผลิตในรอบ 5 วันล่าสุด ▲</span>`;
+                document.getElementById('stockTicker').innerHTML = `<span class="ticker-item t-white">NO PRODUCTION DATA IN THE LAST 5 DAYS</span>`;
                 return;
             }
 
-            // จัดกลุ่ม id_order และ id_target
             const activeMap = new Map();
             const activeOrderIds = new Set();
             recentData.forEach(r => {
@@ -438,7 +547,6 @@
             const activePairs = Array.from(activeMap.values());
             const orderIdQuery = Array.from(activeOrderIds).join(',');
 
-            // 3. ดึงข้อมูลตารางที่เกี่ยวข้อง 
             const [ordersRes, targetsRes, stepsRes, orderStepsRes, allProdRes, workItemsRes] = await Promise.all([
                 fetch(`${SUPABASE_URL}/orders?id_order=in.(${orderIdQuery})&select=id_order,order_no,quantity,id_work`, { headers }),
                 fetch(`${SUPABASE_URL}/targets?select=id_target,id_step,id_work`, { headers }),
@@ -459,14 +567,11 @@
             let today = new Date();
             today.setHours(0,0,0,0);
 
-            // 4. ลูปสร้างข้อความสำหรับแถบวิ่ง
             activePairs.forEach((pair) => {
-                // ข้อมูลใบสั่งงาน และ ยอดสั่ง
                 let orderInfo = orders.find(o => String(o.id_order) === String(pair.id_order));
                 let orderNo = orderInfo ? orderInfo.order_no : "UNKNOWN";
                 let orderQty = (orderInfo && orderInfo.quantity) ? parseInt(orderInfo.quantity) : 0;
 
-                // ข้อมูลขั้นตอน
                 let targetInfo = targets.find(t => String(t.id_target) === String(pair.id_target));
                 let stepName = "PROCESS";
                 let stepId = null;
@@ -476,7 +581,6 @@
                     if (stepInfo) stepName = stepInfo.step_name;
                 }
 
-                // ข้อมูลรหัสชิ้นงาน
                 let workCodeText = "-";
                 let idWork = (orderInfo && orderInfo.id_work) ? orderInfo.id_work : null;
                 if (!idWork && targetInfo) { idWork = targetInfo.id_work; }
@@ -485,7 +589,6 @@
                     if (wItem) workCodeText = wItem.work_code;
                 }
 
-                // ข้อมูลยอดผลิตรวม
                 let totalProduced = 0;
                 allProd.forEach(p => {
                     if (String(p.id_order) === String(pair.id_order) && String(p.id_target) === String(pair.id_target)) {
@@ -493,44 +596,38 @@
                     }
                 });
 
-                // คำนวณเปอร์เซ็นต์
                 let percent = 0;
                 if (orderQty > 0) { percent = (totalProduced / orderQty) * 100; }
 
-                // คำนวณวันครบกำหนด 
                 let deadlineText = "";
                 let orderStepInfo = orderSteps.find(os => String(os.id_order) === String(pair.id_order) && String(os.id_step) === String(stepId));
                 
                 if (orderStepInfo && orderStepInfo.end_date) {
                     let endDate = new Date(orderStepInfo.end_date);
                     endDate.setHours(0,0,0,0);
-                    
                     let diffTime = endDate.getTime() - today.getTime();
                     let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
                     if (diffDays < 0) {
-                        deadlineText = `<span class="t-red">เลยกำหนดแล้ว ${Math.abs(diffDays)} วัน</span>`;
+                        deadlineText = `<span class="t-red">OVERDUE ${Math.abs(diffDays)} DAYS</span>`;
                     } else if (diffDays > 0) {
-                        deadlineText = `<span class="t-green">เหลือเวลาอีก ${diffDays} วัน</span>`;
+                        deadlineText = `<span class="t-green">${diffDays} DAYS LEFT</span>`;
                     } else {
-                        deadlineText = `<span style="color: #f59e0b;">ครบกำหนดวันนี้!</span>`;
+                        deadlineText = `<span style="color: #ffd200;">DUE TODAY</span>`;
                     }
                 } else {
-                    deadlineText = `<span style="color: #9ca3af;">ไม่มีกำหนดเสร็จ</span>`;
+                    deadlineText = `<span style="color: #889bb3;">N/A</span>`;
                 }
 
-                // ประกอบข้อความ
-                tickerString += `<span class="ticker-item t-white"><span style="color:#00ffff;">${orderNo}</span> &nbsp;&nbsp; <span style="color:#e2e8f0;">${workCodeText}</span> &nbsp;&nbsp; <span style="color:#a855f7;">${stepName}</span> &nbsp;&nbsp; ยอดผลิต: ${orderQty.toLocaleString()} &nbsp;&nbsp; ผลิตได้: ${totalProduced.toLocaleString()} (<span style="color:#eab308;">${percent.toFixed(1)}%</span>) &nbsp;&nbsp; ${deadlineText}</span>`;
-                
-                // ใส่ตัวแบ่ง
-                tickerString += `<span class="ticker-item" style="color: #444;">  ///  </span>`;
+                tickerString += `<span class="ticker-item t-white">[ ORDER: <span style="color:#00c6ff;">${orderNo}</span> | CODE: <span style="color:#d1dbe8;">${workCodeText}</span> | STEP: <span style="color:#f953c6;">${stepName}</span> ] TARGET: ${orderQty.toLocaleString()} / COMPLETED: ${totalProduced.toLocaleString()} (<span style="color:#00ff88;">${percent.toFixed(1)}%</span>) DEADLINE: ${deadlineText}</span>`;
+                tickerString += `<span class="ticker-item" style="color: #2b3e54;">  ///  </span>`;
             });
             
             document.getElementById('stockTicker').innerHTML = tickerString + tickerString;
 
         } catch (error) {
             console.error("Ticker Error:", error);
-            document.getElementById('stockTicker').innerHTML = `<span class="ticker-item t-red">ERR: MARKET CONNECTION FAILED</span>`;
+            document.getElementById('stockTicker').innerHTML = `<span class="ticker-item t-red">ERROR: SYSTEM CONNECTION FAILED</span>`;
         }
     }
 
