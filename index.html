@@ -212,7 +212,6 @@
         .menu-btn:hover { transform: translateY(-2px); border-color: #fff; }
         .menu-btn:hover i { transform: scale(1.1); }
 
-        /* การกำหนดสีปุ่มตามที่ผู้ใช้ต้องการ */
         /* หมวด 1: สีส้ม */
         .btn-orange { background: linear-gradient(135deg, var(--c-orange-1), var(--c-orange-2)); }
         .btn-orange:hover { box-shadow: 0 0 15px rgba(255, 126, 95, 0.6); }
@@ -227,7 +226,7 @@
         .btn-green { background: linear-gradient(135deg, var(--c-green-1), var(--c-green-2)); }
         .btn-green:hover { box-shadow: 0 0 15px rgba(56, 239, 125, 0.6); }
 
-        /* หมวด 3: แดง ส้ม เขียว เหลือง ม่วง ฟ้าใหม่ */
+        /* หมวด 3: แดง ส้ม เขียว เหลือง ม่วง ฟ้าใหม่ และ ชมพูใหม่ */
         .btn-red { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
         .btn-red:hover { box-shadow: 0 0 15px rgba(255, 65, 108, 0.6); }
 
@@ -247,9 +246,12 @@
         .btn-wip { background: linear-gradient(135deg, #1d8cf8, #3358f4); }
         .btn-wip:hover { box-shadow: 0 0 15px rgba(29, 140, 248, 0.6); }
         
-        /* สไตล์ปุ่ม Productivity Report ใหม่ */
         .btn-cyan { background: linear-gradient(135deg, #00d2ff, #3a7bd5); }
         .btn-cyan:hover { box-shadow: 0 0 15px rgba(0, 210, 255, 0.6); }
+
+        /* ปุ่มใหม่สำหรับ ติดตามงานรอผลิต */
+        .btn-pink2 { background: linear-gradient(135deg, #ec008c, #fc6767); }
+        .btn-pink2:hover { box-shadow: 0 0 15px rgba(236, 0, 140, 0.6); }
 
         /* ------------------------------------------
            ส่วนหน้าต่าง Modal คู่มือการใช้งาน 
@@ -415,7 +417,10 @@
                 <a href="https://paiboon-creater.github.io/work_in_process/" class="menu-btn btn-wip hover-sound">
                     <i class="fa-solid fa-layer-group"></i><span>งานในมือ<br>แยกตามขั้นตอนผลิต</span>
                 </a>
-                <!-- อัปเดตชื่อปุ่ม -->
+                <!-- ปุ่มที่เพิ่มเข้ามาใหม่ -->
+                <a href="https://paiboon-creater.github.io/waitfor_beetween_process/" class="menu-btn btn-pink2 hover-sound">
+                    <i class="fa-solid fa-hourglass-half"></i><span>ติดตาม งานรอผลิต<br>แต่ละแผนก</span>
+                </a>
                 <a href="https://paiboon-creater.github.io/productivity_reports/" class="menu-btn btn-cyan hover-sound">
                     <i class="fa-solid fa-chart-pie"></i><span>ยอดงานที่ผลิตได้รวม<br>แยกตามขั้นตอน</span>
                 </a>
@@ -465,7 +470,8 @@
                 <p><strong>💰 รายงานต้นทุนการผลิต:</strong> ดูรายงานต้นทุน (Cost per unit)</p>
                 <p><strong>📋 ติดตามยอดผลิตรายใบสั่ง:</strong> เจาะลึกประวัติการผลิตเฉพาะ Order</p>
                 <p><strong>📚 งานในมือแยกตามขั้นตอนผลิต:</strong> ตรวจสอบยอดชิ้นงานที่ยังค้างอยู่ในแต่ละขั้นตอนการผลิต</p>
-                <!-- อัปเดตคำอธิบายตามชื่อปุ่มใหม่ -->
+                <!-- เพิ่มคำอธิบายปุ่มใหม่ -->
+                <p><strong>⏳ ติดตาม งานรอผลิต แต่ละแผนก:</strong> ตรวจสอบรายการชิ้นงานที่กำลังรอคิวเข้าผลิตในแต่ละแผนก</p>
                 <p><strong>📊 ยอดงานที่ผลิตได้รวม แยกตามขั้นตอน:</strong> ตรวจสอบยอดการผลิตสรุปรายวันและรายเดือนแยกตามแผนกหรือขั้นตอน</p>
             </div>
         </div>
