@@ -83,19 +83,22 @@
         .t-white { color: var(--steel-highlight); }
 
         /* ------------------------------------------
-            ปุ่มคู่มือการใช้งานแบบลอย
+            ปุ่มคู่มือและสลับหมวดหมู่แบบลอย
         ------------------------------------------ */
-        .btn-manual-float {
+        .float-buttons {
             position: fixed; top: 45px; left: 15px;
+            display: flex; flex-direction: column; gap: 8px; z-index: 900;
+        }
+        .btn-float {
             background: linear-gradient(135deg, #2b3e54, #162233);
             border: 1px solid var(--steel-border);
             color: var(--steel-highlight);
             padding: 8px 12px; border-radius: 4px;
             font-size: 0.8rem; font-weight: bold; cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 900;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             display: flex; align-items: center; gap: 8px; transition: all 0.2s;
         }
-        .btn-manual-float:hover {
+        .btn-float:hover {
             background: var(--steel-border); color: #000;
             box-shadow: 0 0 15px rgba(136, 155, 179, 0.6);
         }
@@ -159,6 +162,9 @@
             border-left: 4px solid var(--steel-border);
             position: relative;
         }
+        .zone-container.hidden-zone {
+            display: none !important;
+        }
         
         .zone-title {
             font-size: 1rem;
@@ -212,48 +218,70 @@
         .menu-btn:hover { transform: translateY(-2px); border-color: #fff; }
         .menu-btn:hover i { transform: scale(1.1); }
 
-        /* หมวดส้ม */
+        /* สีปุ่ม */
         .btn-orange { background: linear-gradient(135deg, var(--c-orange-1), var(--c-orange-2)); }
         .btn-orange:hover { box-shadow: 0 0 15px rgba(255, 126, 95, 0.6); }
-
-        /* หมวด ฟ้า ชมพู เขียว */
         .btn-blue { background: linear-gradient(135deg, var(--c-blue-1), var(--c-blue-2)); }
         .btn-blue:hover { box-shadow: 0 0 15px rgba(0, 198, 255, 0.6); }
-        
         .btn-pink { background: linear-gradient(135deg, var(--c-pink-1), var(--c-pink-2)); }
         .btn-pink:hover { box-shadow: 0 0 15px rgba(249, 83, 198, 0.6); }
-        
         .btn-green { background: linear-gradient(135deg, var(--c-green-1), var(--c-green-2)); }
         .btn-green:hover { box-shadow: 0 0 15px rgba(56, 239, 125, 0.6); }
-
-        /* หมวดรายงาน */
         .btn-red { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
         .btn-red:hover { box-shadow: 0 0 15px rgba(255, 65, 108, 0.6); }
-
         .btn-orange2 { background: linear-gradient(135deg, var(--c-orange2-1), var(--c-orange2-2)); }
         .btn-orange2:hover { box-shadow: 0 0 15px rgba(245, 175, 25, 0.6); }
-
         .btn-green2 { background: linear-gradient(135deg, #00b09b, #96c93d); }
         .btn-green2:hover { box-shadow: 0 0 15px rgba(150, 201, 61, 0.6); }
-
         .btn-yellow { background: linear-gradient(135deg, var(--c-yellow-1), var(--c-yellow-2)); }
         .btn-yellow i, .btn-yellow span { color: #333; text-shadow: none; }
         .btn-yellow:hover { box-shadow: 0 0 15px rgba(255, 210, 0, 0.6); }
-
         .btn-purple { background: linear-gradient(135deg, var(--c-purple-1), var(--c-purple-2)); }
         .btn-purple:hover { box-shadow: 0 0 15px rgba(142, 45, 226, 0.6); }
-        
         .btn-wip { background: linear-gradient(135deg, #1d8cf8, #3358f4); }
         .btn-wip:hover { box-shadow: 0 0 15px rgba(29, 140, 248, 0.6); }
-        
         .btn-cyan { background: linear-gradient(135deg, #00d2ff, #3a7bd5); }
         .btn-cyan:hover { box-shadow: 0 0 15px rgba(0, 210, 255, 0.6); }
-
         .btn-pink2 { background: linear-gradient(135deg, #ec008c, #fc6767); }
         .btn-pink2:hover { box-shadow: 0 0 15px rgba(236, 0, 140, 0.6); }
 
         /* ------------------------------------------
-            ส่วนหน้าต่าง Modal คู่มือการใช้งาน 
+            หน้าต่าง Modal เลือกหมวดหมู่ตอนเปิดเว็บ
+        ------------------------------------------ */
+        .selector-overlay {
+            display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 10, 18, 0.92); z-index: 3000; justify-content: center; align-items: center;
+            backdrop-filter: blur(8px);
+        }
+        .selector-content {
+            background: var(--steel-panel); border: 2px solid var(--steel-border); border-radius: 8px;
+            width: 90%; max-width: 650px; padding: 35px 30px; box-shadow: 0 0 40px rgba(0, 198, 255, 0.2);
+            color: var(--text-main); text-align: center;
+        }
+        .selector-title {
+            color: var(--steel-highlight); font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px;
+        }
+        .selector-desc {
+            color: #889bb3; font-size: 0.9rem; margin-bottom: 25px; line-height: 1.5;
+        }
+        .selector-options {
+            display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; text-align: left;
+        }
+        .selector-option-btn {
+            background: rgba(11, 19, 30, 0.8); border: 1px solid var(--steel-border);
+            color: var(--text-main); padding: 14px 18px; border-radius: 6px; cursor: pointer;
+            font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 12px;
+            transition: all 0.2s;
+        }
+        .selector-option-btn i { font-size: 1.2rem; color: var(--c-blue-2); }
+        .selector-option-btn:hover {
+            background: var(--steel-border); color: #000; border-color: #fff;
+            box-shadow: 0 0 15px rgba(136, 155, 179, 0.5); transform: translateY(-2px);
+        }
+        .selector-option-btn:hover i { color: #000; }
+
+        /* ------------------------------------------
+            หน้าต่าง Modal คู่มือการใช้งาน 
         ------------------------------------------ */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -316,6 +344,31 @@
 </head>
 <body>
 
+    <!-- 📌 หน้าต่างเลือกหมวดหมู่ตอนเปิดเว็บครั้งแรก -->
+    <div class="selector-overlay" id="categorySelectorModal">
+        <div class="selector-content">
+            <div class="logo-container" style="width: 70px; height: 70px; margin-bottom: 15px;">
+                <img src="https://img.freepik.com/premium-vector/black-golden-aura-unique-golden-roaring-lion-face-front-view-logo-vector-radiating-luxury_764382-146929.jpg?w=2000" alt="Jaguar Logo">
+            </div>
+            <div class="selector-title">JAGUAR PRODUCTION SYSTEM</div>
+            <div class="selector-desc">กรุณาเลือกหมวดหมู่การใช้งานระบบตามสิทธิ์และวัตถุประสงค์ของคุณ</div>
+            <div class="selector-options">
+                <button class="selector-option-btn hover-sound" onclick="selectCategory(1)">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>1. คุณต้องการดูรายงานการผลิตทั้งหมด (เพื่อติดตามและช่วยการตัดสินใจในการบริหารงานผลิต)</span>
+                </button>
+                <button class="selector-option-btn hover-sound" onclick="selectCategory(2)">
+                    <i class="fa-solid fa-gears"></i>
+                    <span>2. คุณต้องการกรอกข้อมูลการผลิต (เฉพาะผู้กรอกข้อมูลการผลิต)</span>
+                </button>
+                <button class="selector-option-btn hover-sound" onclick="selectCategory(3)">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>3. คุณต้องการวางแผนงานการผลิต และตั้งค่ามาตรฐานการผลิต (เฉพาะฝ่ายวางแผนงาน)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- แถบวิ่งโชว์ยอดผลิต -->
     <div class="ticker-wrap">
         <div class="ticker-content" id="stockTicker">
@@ -323,10 +376,15 @@
         </div>
     </div>
 
-    <!-- ปุ่มคู่มือ -->
-    <button class="btn-manual-float hover-sound" onclick="openManual(event)">
-        <i class="fa-solid fa-book"></i> คู่มือระบบ
-    </button>
+    <!-- ปุ่มลอย (คู่มือ & เลือกหมวดหมู่ใหม่) -->
+    <div class="float-buttons">
+        <button class="btn-float hover-sound" onclick="openCategorySelector()">
+            <i class="fa-solid fa-list"></i> เลือกหมวดหมู่
+        </button>
+        <button class="btn-float hover-sound" onclick="openManual(event)">
+            <i class="fa-solid fa-book"></i> คู่มือระบบ
+        </button>
+    </div>
 
     <div class="app-container">
         <!-- น็อตตกแต่ง 4 มุม -->
@@ -344,7 +402,7 @@
         </header>
 
         <!-- หมวดที่ 1: รายงานและติดตามงาน (Public Access) -->
-        <div class="zone-container">
+        <div class="zone-container" id="zone1">
             <div class="zone-title">
                 <span><i class="fa-solid fa-magnifying-glass-chart"></i> หมวดที่ 1: รายงานและติดตามงาน</span>
                 <span class="public-badge"><i class="fa-solid fa-eye"></i> PUBLIC ACCESS</span>
@@ -374,11 +432,9 @@
                 <a href="https://paiboon-creater.github.io/productivity_reports/" class="menu-btn btn-cyan hover-sound">
                     <i class="fa-solid fa-chart-pie"></i><span>ยอดงานที่ผลิตได้รวม<br>แยกตามขั้นตอน</span>
                 </a>
-                <!-- ปุ่มประสิทธิภาพการผลิตพนักงาน ที่เพิ่มเข้ามาใหม่ -->
                 <a href="https://paiboon-creater.github.io/ef_operator/" class="menu-btn btn-blue hover-sound">
                     <i class="fa-solid fa-user-gear"></i><span>ประสิทธิภาพการผลิต<br>พนักงาน</span>
                 </a>
-                <!-- ปุ่มรายงานของเสีย (Waste & NG Report) -->
                 <a href="https://paiboon-creater.github.io/wast_report_/" class="menu-btn btn-red hover-sound" style="background: linear-gradient(135deg, #ff416c, #8b0000);">
                     <i class="fa-solid fa-triangle-exclamation"></i><span>รายงานของเสีย<br>(Waste & NG Report)</span>
                 </a>
@@ -386,7 +442,7 @@
         </div>
 
         <!-- หมวดที่ 2: การปฏิบัติงานประจำวัน (Authorized Only) -->
-        <div class="zone-container">
+        <div class="zone-container" id="zone2">
             <div class="zone-title">
                 <span><i class="fa-solid fa-gears"></i> หมวดที่ 2: การปฏิบัติงานประจำวัน</span>
                 <span class="auth-badge"><i class="fa-solid fa-lock"></i> AUTHORIZED ONLY</span>
@@ -412,7 +468,7 @@
         </div>
 
         <!-- หมวดที่ 3: การวางแผนและการตั้งค่า (Authorized Only) -->
-        <div class="zone-container">
+        <div class="zone-container" id="zone3">
             <div class="zone-title">
                 <span><i class="fa-solid fa-sliders"></i> หมวดที่ 3: การวางแผนและการตั้งค่า</span>
                 <span class="auth-badge"><i class="fa-solid fa-lock"></i> AUTHORIZED ONLY</span>
@@ -493,6 +549,35 @@
     </div>
 
 <script>
+    // ---- ระบบเลือกหมวดหมู่แสดงผล ----
+    function selectCategory(catNum) {
+        const zone1 = document.getElementById('zone1');
+        const zone2 = document.getElementById('zone2');
+        const zone3 = document.getElementById('zone3');
+        const selectorModal = document.getElementById('categorySelectorModal');
+
+        // ซ่อนทั้งหมดก่อน
+        zone1.classList.add('hidden-zone');
+        zone2.classList.add('hidden-zone');
+        zone3.classList.add('hidden-zone');
+
+        // แสดงเฉพาะหมวดที่เลือก
+        if (catNum === 1) {
+            zone1.classList.remove('hidden-zone');
+        } else if (catNum === 2) {
+            zone2.classList.remove('hidden-zone');
+        } else if (catNum === 3) {
+            zone3.classList.remove('hidden-zone');
+        }
+
+        // ปิด Modal เลือกหมวดหมู่
+        selectorModal.style.display = 'none';
+    }
+
+    function openCategorySelector() {
+        document.getElementById('categorySelectorModal').style.display = 'flex';
+    }
+
     // ---- ระบบเสียงปุ่มคลิก ----
     let audioCtx = null;
     function initAudio() {
@@ -529,12 +614,11 @@
         }
 
         let user = prompt("🔒 ระบบจำกัดสิทธิ์การเข้าถึง\nกรุณากรอก Username (หรือใส่รหัสลับที่ช่อง Password):");
-        if (user === null) return; // กดยกเลิก
+        if (user === null) return;
         
         let pass = prompt("🔑 กรุณากรอก Password:");
-        if (pass === null) return; // กดยกเลิก
+        if (pass === null) return;
 
-        // ตรวจสอบรหัส (User ปกติ หรือ รหัสลับ paioon)
         if ((user === 'user1' && pass === '1111') || pass === 'paioon') {
             alert("✅ เข้าสู่ระบบสำเร็จ!");
             sessionStorage.setItem('jaguar_auth', 'true');
