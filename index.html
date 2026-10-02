@@ -438,6 +438,10 @@
                 <a href="https://paiboon-creater.github.io/wast_report_/" class="menu-btn btn-red hover-sound" style="background: linear-gradient(135deg, #ff416c, #8b0000);">
                     <i class="fa-solid fa-triangle-exclamation"></i><span>รายงานของเสีย<br>(Waste & NG Report)</span>
                 </a>
+                <!-- ย้ายปุ่ม Report_Export มาไว้ตรงนี้ในหมวดที่ 1 -->
+                <a href="https://paiboon-creater.github.io/report_export/" class="menu-btn btn-green hover-sound">
+                    <i class="fa-solid fa-file-excel"></i><span>Report_Export<br>(รายงานส่งออกข้อมูล)</span>
+                </a>
             </div>
         </div>
 
@@ -448,11 +452,9 @@
                 <span class="auth-badge"><i class="fa-solid fa-lock"></i> AUTHORIZED ONLY</span>
             </div>
             <div class="menu-grid">
-                <!-- ปุ่มที่ 1: ป้อนข้อมูลด่วน (Fast Form) สีแดง -->
                 <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/fast_form_daily/')" class="menu-btn btn-red hover-sound">
                     <i class="fa-solid fa-bolt"></i><span>ป้อนข้อมูลด่วน<br>(Fast Form)</span>
                 </a>
-                <!-- ปุ่มที่ 2: คีย์งานกลุ่ม -->
                 <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/work_group/')" class="menu-btn btn-blue hover-sound">
                     <i class="fa-solid fa-users-gear"></i><span>คีย์งานกลุ่ม</span>
                 </a>
@@ -491,7 +493,6 @@
                 <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/gantt_chart/')" class="menu-btn btn-orange hover-sound">
                     <i class="fa-solid fa-chart-gantt"></i><span>แกนต์ชาร์ต<br>วางแผนงาน</span>
                 </a>
-                <!-- เพิ่มปุ่ม "ดูแผนงาน" ไว้ตรงนี้ -->
                 <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/plan_gantt/')" class="menu-btn btn-orange hover-sound">
                     <i class="fa-solid fa-calendar-days"></i><span>ดูแผนงาน<br>(Gantt Chart)</span>
                 </a>
@@ -503,10 +504,6 @@
                 </a>
                 <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/add_step/')" class="menu-btn btn-orange hover-sound">
                     <i class="fa-solid fa-layer-group"></i><span>สร้างขั้นตอน<br>ทำงานใหม่</span>
-                </a>
-                <!-- ปุ่มใหม่ Report_Export เพิ่มตรงนี้ -->
-                <a href="javascript:void(0)" onclick="secureNavigate('https://paiboon-creater.github.io/report_export')" class="menu-btn btn-green hover-sound">
-                    <i class="fa-solid fa-file-excel"></i><span>Report_Export<br>(รายงานส่งออกข้อมูล)</span>
                 </a>
             </div>
         </div>
@@ -544,6 +541,8 @@
                 <p><strong>📊 ยอดงานที่ผลิตได้รวม แยกตามขั้นตอน:</strong> ตรวจสอบยอดการผลิตสรุปรายวันและรายเดือนแยกตามแผนกหรือขั้นตอน</p>
                 <p><strong>⚙️ ประสิทธิภาพการผลิตพนักงาน:</strong> ตรวจสอบประสิทธิภาพและอัตราการผลิตของพนักงานแต่ละคน</p>
                 <p><strong>⚠️ รายงานของเสีย (Waste & NG Report):</strong> ตรวจสอบและวิเคราะห์สถิติของเสีย (NG) แยกตามรหัสชิ้นงานและขั้นตอนการผลิต</p>
+                <!-- ย้ายคำอธิบาย Report_Export มาไว้ตรงนี้ในส่วนคู่มือ -->
+                <p><strong>📊 Report_Export:</strong> ส่งออกรายงานยอดผลิตแยกตาม PO ในรูปแบบไฟล์ Excel</p>
             </div>
             <div class="manual-section">
                 <h3>⚙️ หมวดที่ 2: การปฏิบัติงานประจำวัน (Daily Operations)</h3>
@@ -561,7 +560,6 @@
                 <p><strong>📅 แกนต์ชาร์ต วางแผนงาน (Gantt Chart):</strong> ดูแผนการผลิตโดยรวมทั้งหมดในรูปแบบกราฟแท่ง</p>
                 <p><strong>📂 วางแผนขั้นตอนทำงาน:</strong> กำหนดกระบวนการหรือขั้นตอนที่ชิ้นงานต้องผ่าน</p>
                 <p><strong>📝 เพิ่มใบสั่ง:</strong> ใช้สำหรับสร้างหรือเปิด Order งานใหม่เข้าสู่ระบบ</p>
-                <p><strong>📊 Report_Export:</strong> ส่งออกรายงานยอดผลิตแยกตาม PO ในรูปแบบไฟล์ Excel</p>
             </div>
         </div>
     </div>
